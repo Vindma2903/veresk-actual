@@ -16,8 +16,8 @@ use Illuminate\Support\HtmlString;
 class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
-    protected static ?string $modelLabel = 'Страница';
-    protected static ?string $pluralLabel = 'Страницы';
+    protected static ?string $modelLabel = 'РЎС‚СЂР°РЅРёС†Р°';
+    protected static ?string $pluralLabel = 'РЎС‚СЂР°РЅРёС†С‹';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -28,13 +28,13 @@ class PageResource extends Resource
             ->schema([
                 Forms\Components\Actions::make([
                     Forms\Components\Actions\Action::make('site_url')
-                        ->label('На сайт →')
+                        ->label('РќР° СЃР°Р№С‚ в†’')
                         ->url(fn (Page $page) => route('pages.show', ['slug' => $page->slug])),
                 ])->visibleOn('edit'),
 
                 Forms\Components\Tabs::make()
                     ->tabs([
-                        Forms\Components\Tabs\Tab::make('Основная информация')
+                        Forms\Components\Tabs\Tab::make('РћСЃРЅРѕРІРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ')
                             ->columns(2)
                             ->schema([
                                 Forms\Components\TextInput::make('title')
@@ -56,7 +56,7 @@ class PageResource extends Resource
                                     ->htmlField()
                                     ->withLineNumbers()
                                     ->label(__('fields.body_before'))
-                                    ->helperText('Визуальное отображение главного названия будет заменено произвольным контентом из этого блока')
+                                    ->helperText('Р’РёР·СѓР°Р»СЊРЅРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РіР»Р°РІРЅРѕРіРѕ РЅР°Р·РІР°РЅРёСЏ Р±СѓРґРµС‚ Р·Р°РјРµРЅРµРЅРѕ РїСЂРѕРёР·РІРѕР»СЊРЅС‹Рј РєРѕРЅС‚РµРЅС‚РѕРј РёР· СЌС‚РѕРіРѕ Р±Р»РѕРєР°')
                                     ->columnSpanFull()
                                     ->visible(fn (?Page $record): bool => $record?->slug !== 'landshaftnoe-proektirovanie'),
 
@@ -68,20 +68,20 @@ class PageResource extends Resource
                                     ->visible(fn (?Page $record): bool => $record?->slug !== 'landshaftnoe-proektirovanie'),
 
                                 Forms\Components\Repeater::make('blocks_json')
-                                    ->label('Блоки страницы')
-                                    ->helperText('Для страницы landshaftnoe-proektirovanie: для каждого блока задайте Название, Активно и Содержание.')
+                                    ->label('Р‘Р»РѕРєРё СЃС‚СЂР°РЅРёС†С‹')
+                                    ->helperText('Р”Р»СЏ СЃС‚СЂР°РЅРёС†С‹ landshaftnoe-proektirovanie: РґР»СЏ РєР°Р¶РґРѕРіРѕ Р±Р»РѕРєР° Р·Р°РґР°Р№С‚Рµ РќР°Р·РІР°РЅРёРµ, РђРєС‚РёРІРЅРѕ Рё РЎРѕРґРµСЂР¶Р°РЅРёРµ.')
                                     ->columnSpanFull()
                                     ->visible(fn (?Page $record): bool => $record?->slug === 'landshaftnoe-proektirovanie')
                                     ->itemLabel(fn (array $state): ?string => $state['name'] ?? null)
                                     ->schema([
                                         Forms\Components\TextInput::make('name')
-                                            ->label('Название')
-                                            ->placeholder('Блок 1')
+                                            ->label('РќР°Р·РІР°РЅРёРµ')
+                                            ->placeholder('Р‘Р»РѕРє 1')
                                             ->required()
                                             ->maxLength(255),
 
                                         Forms\Components\Toggle::make('is_active')
-                                            ->label('Активно')
+                                            ->label('РђРєС‚РёРІРЅРѕ')
                                             ->default(true),
 
                                         CodeField::make('body')
@@ -90,12 +90,12 @@ class PageResource extends Resource
                                             ->label(__('fields.body')),
 
                                         Forms\Components\Placeholder::make('photo_1_preview')
-                                            ->label('Фото 1')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р¤РѕС‚Рѕ 1')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveBlockImageByIndex(0, $get('images'), $get('image'), $get('body')))),
                                         Forms\Components\FileUpload::make('image_1')
-                                            ->label('Заменить фото 1')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ 1')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks')
@@ -103,12 +103,12 @@ class PageResource extends Resource
                                             ->imageEditor(),
 
                                         Forms\Components\Placeholder::make('photo_2_preview')
-                                            ->label('Фото 2')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р¤РѕС‚Рѕ 2')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveBlockImageByIndex(1, $get('images'), $get('image'), $get('body')))),
                                         Forms\Components\FileUpload::make('image_2')
-                                            ->label('Заменить фото 2')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ 2')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks')
@@ -116,12 +116,12 @@ class PageResource extends Resource
                                             ->imageEditor(),
 
                                         Forms\Components\Placeholder::make('photo_3_preview')
-                                            ->label('Фото 3')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р¤РѕС‚Рѕ 3')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveBlockImageByIndex(2, $get('images'), $get('image'), $get('body')))),
                                         Forms\Components\FileUpload::make('image_3')
-                                            ->label('Заменить фото 3')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ 3')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks')
@@ -129,12 +129,12 @@ class PageResource extends Resource
                                             ->imageEditor(),
 
                                         Forms\Components\Placeholder::make('photo_4_preview')
-                                            ->label('Фото 4')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р¤РѕС‚Рѕ 4')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveBlockImageByIndex(3, $get('images'), $get('image'), $get('body')))),
                                         Forms\Components\FileUpload::make('image_4')
-                                            ->label('Заменить фото 4')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ 4')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks')
@@ -142,12 +142,12 @@ class PageResource extends Resource
                                             ->imageEditor(),
 
                                         Forms\Components\Placeholder::make('photo_5_preview')
-                                            ->label('Фото 5')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р¤РѕС‚Рѕ 5')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveBlockImageByIndex(4, $get('images'), $get('image'), $get('body')))),
                                         Forms\Components\FileUpload::make('image_5')
-                                            ->label('Заменить фото 5')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ 5')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks')
@@ -155,98 +155,98 @@ class PageResource extends Resource
                                             ->imageEditor(),
 
                                         Forms\Components\Placeholder::make('photo_6_preview')
-                                            ->label('Фото 6')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р¤РѕС‚Рѕ 6')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveBlockImageByIndex(5, $get('images'), $get('image'), $get('body')))),
                                         Forms\Components\FileUpload::make('image_6')
-                                            ->label('Заменить фото 6')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 5')
+                                            ->label('Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ 6')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 5')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks')
                                             ->visibility('public')
                                             ->imageEditor(),
                                         Forms\Components\Placeholder::make('photo_9_preview')
-                                            ->label('Фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('Р¤РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveBlockImageByIndex(0, $get('images'), $get('image'), $get('body')))),
                                         Forms\Components\FileUpload::make('image')
-                                            ->label('Заменить фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks')
                                             ->visibility('public')
                                             ->imageEditor(),
                                         Forms\Components\Placeholder::make('hotspot_1_photo_preview')
-                                            ->label('Карточка 1: Фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 1: Р¤РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveHotspotImageByIndex(0, $get('body')))),
                                         Forms\Components\FileUpload::make('hotspot_image_1')
-                                            ->label('Карточка 1: Заменить фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 1: Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks/hotspots')
                                             ->visibility('public')
                                             ->imageEditor(),
                                         Forms\Components\Textarea::make('hotspot_caption_1')
-                                            ->label('Карточка 1: Текст')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 1: РўРµРєСЃС‚')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->rows(2)
                                             ->formatStateUsing(fn ($state, Get $get): ?string => filled($state) ? (string) $state : self::resolveHotspotCaptionByIndex(0, $get('body'))),
 
                                         Forms\Components\Placeholder::make('hotspot_2_photo_preview')
-                                            ->label('Карточка 2: Фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 2: Р¤РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveHotspotImageByIndex(1, $get('body')))),
                                         Forms\Components\FileUpload::make('hotspot_image_2')
-                                            ->label('Карточка 2: Заменить фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 2: Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks/hotspots')
                                             ->visibility('public')
                                             ->imageEditor(),
                                         Forms\Components\Textarea::make('hotspot_caption_2')
-                                            ->label('Карточка 2: Текст')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 2: РўРµРєСЃС‚')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->rows(2)
                                             ->formatStateUsing(fn ($state, Get $get): ?string => filled($state) ? (string) $state : self::resolveHotspotCaptionByIndex(1, $get('body'))),
 
                                         Forms\Components\Placeholder::make('hotspot_3_photo_preview')
-                                            ->label('Карточка 3: Фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 3: Р¤РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveHotspotImageByIndex(2, $get('body')))),
                                         Forms\Components\FileUpload::make('hotspot_image_3')
-                                            ->label('Карточка 3: Заменить фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 3: Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks/hotspots')
                                             ->visibility('public')
                                             ->imageEditor(),
                                         Forms\Components\Textarea::make('hotspot_caption_3')
-                                            ->label('Карточка 3: Текст')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 3: РўРµРєСЃС‚')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->rows(2)
                                             ->formatStateUsing(fn ($state, Get $get): ?string => filled($state) ? (string) $state : self::resolveHotspotCaptionByIndex(2, $get('body'))),
 
                                         Forms\Components\Placeholder::make('hotspot_4_photo_preview')
-                                            ->label('Карточка 4: Фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 4: Р¤РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveHotspotImageByIndex(3, $get('body')))),
                                         Forms\Components\FileUpload::make('hotspot_image_4')
-                                            ->label('Карточка 4: Заменить фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 4: Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks/hotspots')
                                             ->visibility('public')
                                             ->imageEditor(),
                                         Forms\Components\Textarea::make('hotspot_caption_4')
-                                            ->label('Карточка 4: Текст')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 9')
+                                            ->label('РљР°СЂС‚РѕС‡РєР° 4: РўРµРєСЃС‚')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 9')
                                             ->rows(2)
                                             ->formatStateUsing(fn ($state, Get $get): ?string => filled($state) ? (string) $state : self::resolveHotspotCaptionByIndex(3, $get('body'))),
                                         Forms\Components\Placeholder::make('save_block_action')
@@ -254,29 +254,32 @@ class PageResource extends Resource
                                             ->content(new HtmlString(
                                                 '<div style="padding-top: 8px;">' .
                                                 '<button type="submit" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border:none;border-radius:10px;background:#f59e0b;color:#fff;font-weight:600;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.08);" onmouseover="this.style.background=\'#d97706\'" onmouseout="this.style.background=\'#f59e0b\'">' .
-                                                'Сохранить' .
+                                                'РЎРѕС…СЂР°РЅРёС‚СЊ' .
+                                                '</button>' .
+                                                '<button type="button" style="display:inline-flex;align-items:center;justify-content:center;margin-left:10px;padding:10px 16px;border:1px solid #d1d5db;border-radius:10px;background:#fff;color:#374151;font-weight:600;cursor:pointer;" onclick="window.location.reload()">' .
+                                                '??????' .
                                                 '</button>' .
                                                 '</div>'
                                             )),
                                         Forms\Components\Placeholder::make('photo_10_preview')
-                                            ->label('Фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 10')
+                                            ->label('Р¤РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 10')
                                             ->content(fn (Get $get): HtmlString => self::buildImagePreviewHtml(self::resolveBlockImageByIndex(0, $get('images'), $get('image'), $get('body')))),
                                         Forms\Components\FileUpload::make('image')
-                                            ->label('Заменить фото')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 10')
+                                            ->label('Р—Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 10')
                                             ->image()
                                             ->disk('public')
                                             ->directory('files/pages/blocks')
                                             ->visibility('public')
                                             ->imageEditor(),
                                         Forms\Components\Placeholder::make('video_preview')
-                                            ->label('Видео (превью)')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 8')
+                                            ->label('Р’РёРґРµРѕ (РїСЂРµРІСЊСЋ)')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 8')
                                             ->content(function (Get $get): HtmlString {
                                                 $video = $get('video');
                                                 if (!is_string($video) || trim($video) === '') {
-                                                    return new HtmlString('<span style="opacity:.7">Видео не загружено</span>');
+                                                    return new HtmlString('<span style="opacity:.7">Р’РёРґРµРѕ РЅРµ Р·Р°РіСЂСѓР¶РµРЅРѕ</span>');
                                                 }
 
                                                 $src = str_starts_with($video, 'http://') || str_starts_with($video, 'https://') || str_starts_with($video, '/')
@@ -290,8 +293,9 @@ class PageResource extends Resource
                                                 );
                                             }),
                                         Forms\Components\FileUpload::make('video')
-                                            ->label('Загрузить видео MP4')
-                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Блок 8')
+                                            ->label('Р—Р°РіСЂСѓР·РёС‚СЊ РІРёРґРµРѕ MP4')
+                                            ->visible(fn (Get $get): bool => trim((string) $get('name')) === 'Р‘Р»РѕРє 8')
+                                            ->extraAttributes(['class' => 'block-8-video-upload'])
                                             ->disk('public')
                                             ->directory('files/pages/blocks/videos')
                                             ->visibility('public')
@@ -307,23 +311,27 @@ class PageResource extends Resource
 
                                                 return (string) $file;
                                             })
-                                            ->helperText('Загрузите MP4. Видео будет показано в блоке 8 на странице.'),
+                                            ->helperText(new HtmlString(
+                                                'Upload MP4. Video will be shown in block 8.' .
+                                                '<style>.block-8-video-upload .filepond--drop-label{display:none !important;}</style>'
+                                            )),
                                     ])
                                     ->defaultItems(0)
+                                    ->addable(false)
                                     ->reorderableWithButtons()
                                     ->collapsible()
                                     ->collapsed(),
 
                                 Forms\Components\FileUpload::make('attachments')
                                     ->multiple()
-                                    ->label('Файлы')
+                                    ->label('Р¤Р°Р№Р»С‹')
                                     ->imageEditor()
                                     ->appendFiles()
                                     ->openable()
                                     ->directory('/files/pages'),
                             ]),
 
-                        Forms\Components\Tabs\Tab::make('Мета информация')
+                        Forms\Components\Tabs\Tab::make('РњРµС‚Р° РёРЅС„РѕСЂРјР°С†РёСЏ')
                             ->schema([
                                 Forms\Components\TextInput::make('meta_title')
                                     ->label(__('fields.meta_title'))
@@ -346,10 +354,10 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')->label('Название')
+                Tables\Columns\TextColumn::make('title')->label('РќР°Р·РІР°РЅРёРµ')
                     ->sortable()
                     ->searchable(['title', 'slug']),
-                Tables\Columns\TextColumn::make('slug')->label('Ярлык')
+                Tables\Columns\TextColumn::make('slug')->label('РЇСЂР»С‹Рє')
                     ->sortable()
                     ->getStateUsing(function (Page $page) {
                         return '/' . $page->slug;
@@ -368,7 +376,7 @@ class PageResource extends Resource
             ->defaultSort('updated_at', 'desc')
             ->actions([
                 Tables\Actions\Action::make('site_url')
-                    ->label('На сайт →')
+                    ->label('РќР° СЃР°Р№С‚ в†’')
                     ->url(fn (Page $page) => route('pages.show', ['slug' => $page->slug])),
             ])
             ->bulkActions([
@@ -400,7 +408,7 @@ class PageResource extends Resource
     private static function buildImagePreviewHtml(?string $src): HtmlString
     {
         if (empty($src)) {
-            return new HtmlString('<span style="opacity:.7">Нет фото</span>');
+            return new HtmlString('<span style="opacity:.7">РќРµС‚ С„РѕС‚Рѕ</span>');
         }
 
         return new HtmlString(

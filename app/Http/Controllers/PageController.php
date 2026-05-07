@@ -36,6 +36,12 @@ class PageController extends EntryController
             $entry->meta_keywords
         );
 
+        if ($slug === 'landshaftnoe-proektirovanie') {
+            return view('pages.landshaftnoe-proektirovanie', [
+                'entry' => $entry,
+            ]);
+        }
+
         return view('entries.page', [
             'entry' => $entry,
             'service_slider_data' => $serviceSliderData,

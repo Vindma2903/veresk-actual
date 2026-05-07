@@ -15,9 +15,14 @@ use InvadersXX\FilamentJsoneditor\Forms\JSONEditor;
 class SiteOptionResource extends Resource
 {
     protected static ?string $model = SiteOption::class;
-    protected static ?string $modelLabel = 'Настройка';
-    protected static ?string $pluralLabel = 'Настройки';
+    protected static ?string $modelLabel = 'Настройка сайта';
+    protected static ?string $pluralLabel = 'Настройки сайта';
     protected static ?string $navigationIcon = 'heroicon-s-cog';
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Settings';
+    }
 
     public static function form(Form $form): Form
     {

@@ -20,6 +20,11 @@ class ServiceResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Services';
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -108,7 +113,7 @@ class ServiceResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')->label(__('fields.created_at'))->dateTime('d.m.Y H:i'),
                 Tables\Columns\TextColumn::make('updated_at')->label(__('fields.updated_at'))->dateTime('d.m.Y H:i'),
                 Tables\Columns\ToggleColumn::make('is_active')->label(__('fields.is_active')),
-                Tables\Columns\ToggleColumn::make('is_show_homepage')->label('В слайдере'),
+                Tables\Columns\ToggleColumn::make('is_show_homepage')->label('На главной странице'),
             ])
             ->reorderable('position')
             ->defaultSort('position')
@@ -117,7 +122,7 @@ class ServiceResource extends Resource
                     ->label('Родитель')
                     ->options(Service::toTreeSelect()),
                 Tables\Filters\Filter::make('is_roots')
-                    ->label('Корневые элементы')
+                    ->label('Только верхнеуровневые')
                     ->query(fn(Builder $query) => $query->where('parent_id', '=', null))
             ])
             ->actions([

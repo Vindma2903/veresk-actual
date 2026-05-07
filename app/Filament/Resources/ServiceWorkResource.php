@@ -13,10 +13,15 @@ use Filament\Tables\Table;
 class ServiceWorkResource extends Resource
 {
     protected static ?string $model = ServiceWork::class;
-    protected static ?string $modelLabel = 'Фото услуг';
-    protected static ?string $pluralLabel = 'Фото услуг';
+    protected static ?string $modelLabel = 'Фото услуги';
+    protected static ?string $pluralLabel = 'Фото услуги';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Service Photos';
+    }
 
     public static function form(Form $form): Form
     {

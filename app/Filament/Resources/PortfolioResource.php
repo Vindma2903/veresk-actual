@@ -22,6 +22,11 @@ class PortfolioResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Portfolio';
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -52,7 +57,7 @@ class PortfolioResource extends Resource
                                 Forms\Components\FileUpload::make('thumbnail')
                                     ->label(__('fields.thumbnail'))
                                     ->imageEditor()
-                                    ->helperText('Всё нарежется само в размер, желательно подобрать соотношение сторон 4:3')
+                                    ->helperText('Рекомендуемый формат изображения 4:3')
                                     ->directory('/files/portfolios'),
                                 Forms\Components\Checkbox::make('is_active')
                                     ->label(__('fields.is_active'))

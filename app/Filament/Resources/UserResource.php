@@ -24,6 +24,11 @@ class UserResource extends Resource
     protected static ?string $pluralLabel = 'Пользователи';
     protected static ?string $navigationIcon = 'heroicon-s-user';
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Users';
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -47,7 +52,7 @@ class UserResource extends Resource
                     ->required(fn (string $context): bool => $context === 'create'),
                 Forms\Components\Checkbox::make('is_admin')
                     ->label('Администратор')
-                    ->helperText('Администраторы имеют доступ в панель управления')
+                    ->helperText('Снимайте эту галочку только если в системе есть другой администратор.')
                 ->rules([
                     fn($get) => function (string $attribute, $value, $fail) use ($get) {
                         $authUserId = $get('id');
@@ -55,7 +60,7 @@ class UserResource extends Resource
                         if ($value === false
                             && $authUserId !== null
                             && $authUserId === $currentUserId) {
-                            $fail("Вы не можете лишить себя прав администратора. Это может сделать только другой администратор. Это необходимая мера, чтобы остался по крайней мере один администратор.");
+                            $fail("Нельзя снять права администратора у текущего пользователя.");
                         }
                     },
                 ])
@@ -69,7 +74,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('name')->label('Имя')->sortable(),
                 Tables\Columns\TextColumn::make('email')->label('E-mail')->sortable(),
                 Tables\Columns\TextColumn::make('created_at')->label('Создан')->sortable(),
-                Tables\Columns\TextColumn::make('updated_at')->label('Обновлён')->sortable(),
+                Tables\Columns\TextColumn::make('updated_at')->label('Обновлен')->sortable(),
                 Tables\Columns\IconColumn::make('is_admin')->label('Администратор')->boolean(),
             ])
             ->filters([

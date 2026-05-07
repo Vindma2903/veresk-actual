@@ -1,0 +1,10 @@
+﻿http://127.0.0.1:8000/js/creagia/filament-code-field/filament-code-field.js?v=2.0.0.0
+http://127.0.0.1:8000/js/filament/forms/forms.js?v=3.0.39.0
+http://127.0.0.1:8000/js/filament/notifications/notifications.js?v=3.0.39.0
+http://127.0.0.1:8000/js/filament/support/async-alpine.js?v=3.0.39.0
+http://127.0.0.1:8000/js/filament/support/support.js?v=3.0.39.0
+http://127.0.0.1:8000/js/filament/tables/tables.js?v=3.0.39.0
+http://127.0.0.1:8000/js/awcodes/headings/invaders-filament-jsoneditor.js?v=3.0.39.0
+http://127.0.0.1:8000/js/filament/filament/echo.js?v=3.0.39.0
+http://127.0.0.1:8000/js/filament/filament/app.js?v=3.0.39.0
+/livewire/livewire.js?id=11c49d7e

@@ -1,5 +1,8 @@
 <section class="py-10 sm:py-12 lg:py-20 space-y-10 sm:space-y-12 lg:space-y-24">
-    @if($isBlockVisible('Блок 2'))
+    @if($isBlockVisible(2))
+    @if($getBlockBody(2))
+        {!! $getBlockBody(2) !!}
+    @else
     <div class="bg-black px-4 sm:px-8 py-8 sm:py-12 lg:py-16 2xl:py-20 rounded-3xl">
         <div class="max-w-7xl mx-auto text-center text-white mb-8 2xl:mb-10">
             <h2 class="text-lg sm:text-2xl lg:text-[28px] xl:text-[40px] leading-[3rem] font-normal">
@@ -46,8 +49,12 @@
         </div>
     </div>
     @endif
+    @endif
 
-    @if($isBlockVisible('Блок 3'))
+    @if($isBlockVisible(3))
+    @if($getBlockBody(3))
+        {!! $getBlockBody(3) !!}
+    @else
     <div class="border-b border-[#D9D9D9] mt-12 2xl:mt-16 w-screen relative left-1/2 -translate-x-1/2">
         <div class="border-b border-[#D9D9D9]">
             <div class="container py-6">
@@ -106,8 +113,12 @@
         </div>
     </div>
     @endif
+    @endif
 
-    @if($isBlockVisible('Блок 4'))
+    @if($isBlockVisible(4))
+    @if($getBlockBody(4))
+        {!! $getBlockBody(4) !!}
+    @else
     <div class="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-8 lg:gap-12 items-start">
         <h2 class="text-3xl lg:text-4xl uppercase lg:col-start-1 lg:row-start-1">Ландшафтное проектирование</h2>
         <div class="aspect-[16/10] overflow-hidden bg-[#C8DFC0]/30 lg:col-start-1 lg:row-start-2">
@@ -165,8 +176,12 @@
         </div>
     </div>
     @endif
+    @endif
 
-    @if($isBlockVisible('Блок 5'))
+    @if($isBlockVisible(5))
+    @if($getBlockBody(5))
+        {!! $getBlockBody(5) !!}
+    @else
     <div>
         <h2 class="text-3xl lg:text-4xl uppercase mb-8">Комплекс работ ландшафтного бюро</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -196,8 +211,12 @@
         </div>
     </div>
     @endif
+    @endif
 
-    @if($isBlockVisible('Блок 6'))
+    @if($isBlockVisible(6))
+    @if($getBlockBody(6))
+        {!! $getBlockBody(6) !!}
+    @else
     <div class="space-y-8 2xl:space-y-10 tablet-section-spacing lp-packages-bullets">
         <div class="space-y-4 max-w-4xl">
             <h2 class="text-3xl lg:text-4xl 2xl:text-[44px] uppercase">Документы которые включает проект</h2>
@@ -479,8 +498,12 @@
         </div>
     </div>
     @endif
+    @endif
 
-    @if($isBlockVisible('Блок 7'))
+    @if($isBlockVisible(7))
+    @if($getBlockBody(7))
+        {!! $getBlockBody(7) !!}
+    @else
     <div class="space-y-10 2xl:space-y-12">
         <div class="max-w-3xl space-y-4">
             <h2 class="text-3xl lg:text-4xl 2xl:text-[44px] uppercase">Как дизайнер ландшафтов понимает заказчика</h2>
@@ -523,8 +546,12 @@
         </div>
     </div>
     @endif
+    @endif
 
-    @if($isBlockVisible('Блок 8'))
+    @if($isBlockVisible(8))
+    @if($getBlockBody(8))
+        {!! $getBlockBody(8) !!}
+    @else
     <section class="mt-16 2xl:mt-20 space-y-6">
         <h2 class="text-3xl lg:text-4xl 2xl:text-[44px] uppercase">
             Посмотрите, как мы работаем
@@ -544,8 +571,12 @@
         </div>
     </section>
     @endif
+    @endif
 
-    @if($isBlockVisible('Блок 9'))
+    @if($isBlockVisible(9))
+    @if($getBlockBody(9))
+        {!! $getBlockBody(9) !!}
+    @else
         <div class="space-y-10">
         <div class="relative rounded-3xl overflow-hidden bg-gray-900" data-hotspot-area="landshaft">
             <img src="/img/213.png"
@@ -608,8 +639,12 @@
         </div>
     </div>
     @endif
+    @endif
 
-    @if($isBlockVisible('Блок 10'))
+    @if($isBlockVisible(10))
+    @if($getBlockBody(10))
+        {!! $getBlockBody(10) !!}
+    @else
     <div class="space-y-8">
         <h2 class="text-3xl lg:text-4xl uppercase">Наши работы</h2>
 
@@ -637,5 +672,6 @@
             @endforeach
         </div>
     </div>
+    @endif
     @endif
 </section>

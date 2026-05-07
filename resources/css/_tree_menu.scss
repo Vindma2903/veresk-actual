@@ -1,0 +1,15 @@
+.tree-menu {
+    &>ul>li {
+        margin-bottom: 1rem;
+        ul {
+            margin-top: .5rem;
+            display: none;
+            li {
+                margin-bottom: .5rem;
+            }
+        }
+        &.active ul {
+            display: block;
+        }
+    }
+}

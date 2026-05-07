@@ -1,0 +1,64 @@
+// Произвольные стили для всего контента внутри .entry-content
+// scss-docs-start import-stack
+// Configuration
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+
+$primary: #91ac86;
+$linkColor: lighten($primary, 10%);
+$linkHoverColor: lighten($linkColor, 10%);
+
+.entry-content {
+    @import "bootstrap/scss/root";
+    @import "bootstrap/scss/reboot";
+    @import "bootstrap/scss/type";
+    @import "bootstrap/scss/images";
+
+    ul {
+        list-style-type: disc;
+        li {
+            margin-bottom: .25rem;
+        }
+    }
+    a {
+        color: $linkColor;
+        text-decoration: underline;
+
+        &:hover {
+            color: $linkHoverColor;
+            text-decoration: underline;
+        }
+    }
+    b,
+    strong {
+        font-weight: 500;
+    }
+    table {
+        max-width: 100%;
+        width: 100%;
+        margin: .5rem 0;
+        th, td {
+            padding: .4rem;
+            line-height: 1.42857143;
+            vertical-align: middle;
+            border: 1px solid lighten(black, 25%);
+            p:last-child {
+                margin-bottom: 0;
+            }
+        }
+        img {
+            min-width: 90px;
+            border-radius: .25rem;
+        }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}

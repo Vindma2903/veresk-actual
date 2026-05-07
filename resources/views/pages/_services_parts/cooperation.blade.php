@@ -1,0 +1,45 @@
+<div class="relative">
+    <div class="w-[320px] h-[320px] mt-[-140px]
+    sm:w-[550px] sm:h-[550px] sm:mt-[-275px] bg-green rounded-full opacity-40 blur-[100px] absolute right-0 sm:right-[-30%] md:right-0 lg:right-[5%] top-1/2 z-[-1]"></div>
+
+    <div class="container">
+        <x-caption-2-cols title="Этапы сотрудничества">
+            <div class="max-w-[660px]">
+                <div class="text-2xl md:text-4xl mb-5 font-helvetica">Первостепенной задачей для нас является достижение взаимопонимания с заказчиком относительно видения дизайна. </div>
+                <div class="opacity-60 text-lg md:text-2xl">После разработки проекта определяется этапность выполнения работ. На каждом участке есть свои индивидуальные особенности, но в целом алгоритм одинаков.</div>
+            </div>
+        </x-caption-2-cols>
+    </div>
+</div>
+
+<div class="h-28"></div>
+
+@php
+    $cooperationItems = [
+        ['title' => 'Планировка участка', 'desc' => 'Участки с выраженным рельефом требуют его корректировки.'],
+        ['title' => 'Инженерная подготовка', 'desc' => 'Дренажи, ливневая канализация, закладывается линия прохода электричества.'],
+        ['title' => 'Основные элементы благоустройства', 'desc' => 'Подпорные стенки, дорожки и площадки, водоемы, создаются основания под садовые светильники, подготавливаются цветники и монтируется автополив.'],
+        ['title' => 'Озеленение участка', 'desc' => 'Посадка деревьев и кустарников, создание цветников, озеленение водоемов, оформление рокариев растениями, создание газонов.'],
+    ]
+@endphp
+<div class="container">
+    <div class="font-helvetica sm:flex sm:flex-wrap">
+        @foreach($cooperationItems as $item)
+            <div class="sm:basis-1/2 xl:basis-1/4 mb-12 last:mb-0">
+                <div class="sm:border-b sm:border-[#333333] sm:mx-2">
+                    @php
+                    $n = $loop->iteration;
+                    $n = $n > 9 ? $n : '0' . $n;
+                    @endphp
+                    <div class="border-b border-[#333333] pb-5 mb-2.5 text-lg sm:pl-5 sm:m-0">
+                        <div class="opacity-40">{{ $n }}</div>
+                    </div>
+                    <div class="sm:border-r sm:border-[#333333] sm:h-[200px] xl:h-[270px] sm:flex sm:flex-col sm:justify-between sm:p-4 sm:my-4">
+                        <h4 class="text-xl sm:text-2xl mb-4">{{ $item['title'] }}</h4>
+                        <div class="">{{ $item['desc'] }}</div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>

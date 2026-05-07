@@ -1,0 +1,28 @@
+@php
+    $processItems = [
+       ["Выезд специалиста", "la-phone"],
+       ["Создание концепции", "la-lightbulb"],
+       ["Заключение договора", "la-pen-nib"],
+       ["Разработка проекта", "la-file"],
+       ["Составление сметы", "la-search"],
+       ["БлагоустройСтво", "la-map-marker"],
+       ["Озеленение", "la-tree"],
+       ["Ваш сад готов!", "la-check"],
+    ];
+@endphp
+<h3 class="opacity-40 uppercase mb-12 sm:mb-5 lg:mb-12">Процесс</h3>
+
+<ol data-js-fade-scroll>
+    @foreach($processItems as $processItem)
+        @php
+            $n = $loop->iteration;
+        @endphp
+        <li class="flex items-center justify-between border-b border-gray-500 py-4 first:border-t">
+            <div class="flex items-center">
+                <div class="opacity-40 font-helvetica">{{ $n > 9 ? $n : '0' . $n }}</div>
+                <div class="uppercase ml-2.5 sm:text-2xl sm:ml-16">{{ $processItem[0] }}</div>
+            </div>
+            <div class="opacity-90 text-xl sm:text-2xl"><i class="las {{ $processItem[1] }}"></i></div>
+        </li>
+    @endforeach
+</ol>

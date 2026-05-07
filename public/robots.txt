@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /admin/  # закрывает админку
+Disallow: /*?* #закрывает индексацию параметров
+Disallow: *.pdf
+Disallow: *.xls
+Disallow: *.doc
+Disallow: *.ppt
+Allow: */js/*.js
+Allow: */css/*.css
+Allow: *.png
+Allow: *.jpg
+
+
+Host: https://veresk-landshaft.ru # Указание главного зеркала для Яндекса
+Sitemap: https://veresk-landshaft.ru/sitemap.xml

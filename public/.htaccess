@@ -1,0 +1,85 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # old pages
+    Redirect 301 /o-kompanii /about
+    Redirect 301 /uslugi /services
+    Redirect 301 /ceny /prices
+    Redirect 301 /kontakty /contacts
+    Redirect 301 /landshaftnoe-proektirovanie /services/landshaftnoe-proektirovanie
+    Redirect 301 /landshaftnye-predproektnye-raboty /services/landshaftnye-predproektnye-raboty
+    Redirect 301 /sostav-landshaftnogo-proekta /services/sostav-landshaftnogo-proekta
+    Redirect 301 /topograficheskaya-semka /services/topograficheskaya-semka
+    Redirect 301 /analiz-pochvy /services/analiz-pochvy
+    Redirect 301 /blagoustrojstvo-dachnogo-uchastka /services/blagoustrojstvo-dachnogo-uchastka
+    Redirect 301 /moshhenie-dorozhek /services/moshhenie-dorozhek
+    Redirect 301 /livnevaya-kanalizaciya /services/livnevaya-kanalizaciya
+    Redirect 301 /drenazh-uchastka /services/drenazh-uchastka
+    Redirect 301 /podpornye-stenki /services/podpornye-stenki
+    Redirect 301 /parkovka-na-dache-pod-klyuch /services/parkovka-na-dache-pod-klyuch
+    Redirect 301 /ekoparkovka-pod-klyuch /services/ekoparkovka-pod-klyuch
+    Redirect 301 /otmostka-vokrug-doma /services/otmostka-vokrug-doma
+    Redirect 301 /raschistka-uchastka /services/raschistka-uchastka
+    Redirect 301 /pokos-travy /services/pokos-travy
+    Redirect 301 /ozelenenie-uchastka /services/ozelenenie-uchastka
+    Redirect 301 /posadka-rastenij /services/posadka-rastenij
+    Redirect 301 /zhivye-izgorodi /services/zhivye-izgorodi
+    Redirect 301 /ustrojstvo-gazona /services/ustrojstvo-gazona
+    Redirect 301 /rulonnyj-gazon-pod-klyuch /services/rulonnyj-gazon-pod-klyuch
+    Redirect 301 /posevnoj-gazon-pod-klyuch /services/posevnoj-gazon-pod-klyuch
+    Redirect 301 /ukhod-za-sadom /services/ukhod-za-sadom
+    Redirect 301 /ukhod-za-sadom-vesnoj /services/ukhod-za-sadom-vesnoj
+    Redirect 301 /ukhod-za-sadom-osenyu /services/ukhod-za-sadom-osenyu
+    Redirect 301 /uslugi-strizhki-gazona /services/uslugi-strizhki-gazona
+    Redirect 301 /uslugi-ukhoda-za-gazonom /services/uslugi-ukhoda-za-gazonom
+    Redirect 301 /strizhka-zhivoj-izgorodi /services/strizhka-zhivoj-izgorodi
+    Redirect 301 /obrezka-derevev /services/obrezka-derevev
+    Redirect 301 /obrezka-kustov /services/obrezka-kustov
+    Redirect 301 /ochistka-prudov /services/ochistka-prudov
+    Redirect 301 /prochistka-livnevoj-kanalizacii /services/prochistka-livnevoj-kanalizacii
+    Redirect 301 /uborka-territorii-ot-listvy /services/uborka-territorii-ot-listvy
+    Redirect 301 /korchevanie-pnej /services/korchevanie-pnej
+    Redirect 301 /valka-derevev /services/valka-derevev
+    Redirect 301 /vyrubka-kustarnika /services/vyrubka-kustarnika
+    Redirect 301 /posadka-kustarnikov /services/posadka-kustarnikov
+    Redirect 301 /posadka-derevev /services/posadka-derevev
+    Redirect 301 /podpornye-stenki-iz-kamnya /services/podpornye-stenki-iz-kamnya
+    Redirect 301 /podpornye-stenki-iz-gabionov /services/podpornye-stenki-iz-gabionov
+    Redirect 301 /podpornye-stenki-iz-dereva /services/podpornye-stenki-iz-dereva
+    Redirect 301 /podpornye-stenki-iz-betona /services/podpornye-stenki-iz-betona
+    Redirect 301 /oblicovka-podpornykh-stenok /services/oblicovka-podpornykh-stenok
+    Redirect 301 /metallicheskie-podpornye-stenki /services/metallicheskie-podpornye-stenki
+    Redirect 301 /nabivnye-dorozhki /services/nabivnye-dorozhki
+    Redirect 301 /moshhenie-trotuarnoj-plitkoj /services/moshhenie-trotuarnoj-plitkoj
+    Redirect 301 /moshhenie-prirodnym-kamnem /services/moshhenie-prirodnym-kamnem
+    Redirect 301 /moshhenie-klinkerom /services/moshhenie-klinkerom
+    Redirect 301 /moshhenie-bruschatkoj /services/moshhenie-bruschatkoj
+    Redirect 301 /derevyannye-dorozhki-na-dache /services/derevyannye-dorozhki-na-dache
+    Redirect 301 /landshaftnyj-dizajn-uchastka /services/landshaftnyj-dizajn-uchastka
+
+    # 301 redirect https
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    #301 redirect s www na bez www
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$
+    RewriteRule ^(.*)$ http://%1/$1 [L,R=301] 
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

@@ -1,0 +1,25 @@
+@php
+$whyUsItems = [
+    'Даем гарантию на все работы',
+    'Опытные дизайнеры',
+    'ориентируемся на пожелания клиента',
+    'предоставляем скидки на материалы от партнеров',
+    'работаем по договору',
+    'предоставляем возможность сделать проект бесплатно',
+    'закупаем и доставляем весь материал',
+    'предоставляем ежедневную отчетность',
+]
+@endphp
+
+<x-caption-2-cols title="Причины">
+    <div class="text-2xl md:text-4xl mb-5 font-helvetica">Почему мы?</div>
+
+    <ul>
+        @foreach($whyUsItems as $item)
+            <li class="flex items-center gap-2.5 border-b border-[#666666] first:border-t py-2.5 md:py-5">
+                <span class="opacity-50 bg-white w-2.5 h-2.5 rounded-full"></span>
+                <span class="uppercase text-sm sm:text-base lg:text-xl">{{ $item }}</span>
+            </li>
+        @endforeach
+    </ul>
+</x-caption-2-cols>

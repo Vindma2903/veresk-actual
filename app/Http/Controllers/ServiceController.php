@@ -37,14 +37,11 @@ class ServiceController extends EntryController
                     $pageEntry->meta_description ?? $pageEntry->body,
                     $pageEntry->meta_keywords
                 );
-
-                return view('pages.landshaftnoe-proektirovanie', [
-                    'entry' => $pageEntry,
-                ]);
             }
 
             return view('pages.landshaftnoe-proektirovanie', [
                 'entry' => $entry,
+                'pageEntry' => $pageEntry,
             ]);
         }
 

@@ -50,7 +50,8 @@ class PageResource extends Resource
 
                                 Forms\Components\Checkbox::make('is_active')
                                     ->label(__('fields.is_active'))
-                                    ->helperText(__('fields.is_active_help')),
+                                    ->helperText(__('fields.is_active_help'))
+                                    ->visible(fn (?Page $record): bool => $record?->slug !== 'landshaftnoe-proektirovanie'),
 
                                 CodeField::make('body_before')
                                     ->htmlField()
@@ -80,7 +81,7 @@ class PageResource extends Resource
                                             ->required()
                                             ->maxLength(255),
 
-                                        Forms\Components\Toggle::make('is_active')
+                                        Forms\Components\Checkbox::make('is_active')
                                             ->label('Активно')
                                             ->default(true),
 
@@ -312,7 +313,7 @@ class PageResource extends Resource
                                     ->defaultItems(0)
                                     ->reorderableWithButtons()
                                     ->collapsible()
-                                    ->collapsed(),
+                                    ->collapsed(false),
 
                                 Forms\Components\FileUpload::make('attachments')
                                     ->multiple()

@@ -54,10 +54,12 @@ class EditPage extends EditRecord
 
     protected function getFormActions(): array
     {
-        if (($this->record?->slug ?? null) === 'landshaftnoe-proektirovanie') {
-            return [];
-        }
-
-        return parent::getFormActions();
+        return [
+            $this->getCancelFormAction()
+                ->label('Отмена')
+                ->color('gray')
+                ->visible(true),
+            $this->getSaveFormAction(),
+        ];
     }
 }

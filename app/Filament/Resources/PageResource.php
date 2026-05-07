@@ -254,6 +254,9 @@ class PageResource extends Resource
                                             ->label('')
                                             ->content(new HtmlString(
                                                 '<div style="padding-top: 8px;">' .
+                                                '<button type="button" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border:1px solid #d1d5db;border-radius:10px;background:#fff;color:#374151;font-weight:600;cursor:pointer;margin-right:8px;" onclick="window.location.reload()">' .
+                                                'Отмена' .
+                                                '</button>' .
                                                 '<button type="submit" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border:none;border-radius:10px;background:#f59e0b;color:#fff;font-weight:600;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.08);" onmouseover="this.style.background=\'#d97706\'" onmouseout="this.style.background=\'#f59e0b\'">' .
                                                 'Сохранить' .
                                                 '</button>' .

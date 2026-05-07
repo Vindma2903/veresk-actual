@@ -51,4 +51,13 @@ class EditPage extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function getFormActions(): array
+    {
+        if (($this->record?->slug ?? null) === 'landshaftnoe-proektirovanie') {
+            return [];
+        }
+
+        return parent::getFormActions();
+    }
 }

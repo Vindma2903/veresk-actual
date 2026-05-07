@@ -69,10 +69,10 @@ class PageResource extends Resource
 
                                 Forms\Components\Repeater::make('blocks_json')
                                     ->label('Блоки страницы')
-                                    ->helperText('Для страницы landshaftnoe-proektirovanie: для каждого блока задайте Название, Активно и Содержание.')
                                     ->columnSpanFull()
                                     ->visible(fn (?Page $record): bool => $record?->slug === 'landshaftnoe-proektirovanie')
                                     ->itemLabel(fn (array $state): ?string => $state['name'] ?? null)
+                                    ->addable(false)
                                     ->schema([
                                         Forms\Components\TextInput::make('name')
                                             ->label('Название')
@@ -320,7 +320,8 @@ class PageResource extends Resource
                                     ->imageEditor()
                                     ->appendFiles()
                                     ->openable()
-                                    ->directory('/files/pages'),
+                                    ->directory('/files/pages')
+                                    ->visible(fn (?Page $record): bool => $record?->slug !== 'landshaftnoe-proektirovanie'),
                             ]),
 
                         Forms\Components\Tabs\Tab::make('Мета информация')

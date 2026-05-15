@@ -7,6 +7,7 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
 use App\Models\Page;
 use App\Models\Service;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,15 @@ if (!app()->isProduction()) {
     Route::get('/test', fn() => view('pages.test'));
 }
 Route::get('/imager/{path}', [ImageController::class, 'show'])->where('path', '.*')->name('imager');
+Route::get('/storage/{path}', function (string $path) {
+    $fullPath = storage_path('app/public/' . ltrim($path, '/'));
+
+    if (!File::exists($fullPath) || !File::isFile($fullPath)) {
+        abort(404);
+    }
+
+    return response()->file($fullPath);
+})->where('path', '.*');
 Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolios.show');
 Route::post('/notify-send', [NotifyController::class, 'send'])->name('notify.send')->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
@@ -48,4 +58,3 @@ Route::get('/{slug?}', [PageController::class, 'show'])->name('pages.show');
 //    ]);
 //})->name('pages.show');
 //
-

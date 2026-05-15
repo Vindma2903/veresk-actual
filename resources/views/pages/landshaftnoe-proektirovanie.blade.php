@@ -44,14 +44,6 @@
             ? $video
             : '/storage/' . ltrim($video, '/');
 
-        // Keep original block size, add 20px spacing below it.
-        $body = preg_replace(
-            '/<div class="bg-\[#111111\] border border-\[#2E4132\] rounded-3xl overflow-hidden">/i',
-            '<div class="bg-[#111111] border border-[#2E4132] rounded-3xl overflow-hidden mb-[20px]">',
-            $body,
-            1
-        ) ?? $body;
-
         $videoOverlay =
             '<div class="absolute inset-0 bg-gradient-to-br from-[#1D271F] via-[#111111] to-[#3E5A41]">' .
             '<video controls playsinline preload="metadata" class="w-full h-full object-cover" style="pointer-events:auto;">' .
@@ -76,10 +68,16 @@
 @endsection
 
 @section('main')
-    <div class="container">
+    <div class="container space-y-8 sm:space-y-10 lg:space-y-12">
         @for ($position = 2; $position <= 10; $position++)
             @if($isBlockVisible($position) && $getBlockBody($position))
-                {!! $applyVideoToBlock8($position, $getBlockBody($position)) !!}
+                @if($position === 8)
+                    <div class="mb-8 sm:mb-10">
+                        {!! $applyVideoToBlock8($position, $getBlockBody($position)) !!}
+                    </div>
+                @else
+                    {!! $applyVideoToBlock8($position, $getBlockBody($position)) !!}
+                @endif
             @endif
         @endfor
     </div>

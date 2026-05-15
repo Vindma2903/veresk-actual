@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SiteOption;
 use App\Rules\PhoneRussiaRule;
+use Throwable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -37,11 +38,16 @@ class NotifyController extends Controller
         $phone = $request->input('phone');
         $email = $request->input('email');
 
-        $ipData = geoip($request->getClientIp());
         $fromArr = [$request->getClientIp()];
-        if ($ipData instanceof Location) {
-            $fromArr[] = $ipData->country;
-            $fromArr[] = $ipData->city;
+
+        try {
+            $ipData = geoip($request->getClientIp());
+            if ($ipData instanceof Location) {
+                $fromArr[] = $ipData->country;
+                $fromArr[] = $ipData->city;
+            }
+        } catch (Throwable $e) {
+            // GeoIP should not break form submission when cache driver doesn't support tags.
         }
 
         $data = [

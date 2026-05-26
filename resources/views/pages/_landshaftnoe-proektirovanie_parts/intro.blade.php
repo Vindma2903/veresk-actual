@@ -12,9 +12,9 @@
                 </p>
 
                 <div class="inline-flex flex-col gap-2 w-full sm:w-auto">
-                    <button type="button" class="relative z-[100] inline-flex items-center justify-center w-full sm:w-auto px-8 py-2.5 bg-[#7D9B73] text-white text-sm sm:text-base font-semibold shadow-lg shadow-black/35 hover:opacity-95 transition-opacity">
+                    <a href="#js-contact-form" class="relative z-[100] inline-flex items-center justify-center w-full sm:w-auto px-8 py-2.5 bg-[#7D9B73] text-white text-sm sm:text-base font-semibold shadow-lg shadow-black/35 hover:opacity-95 transition-opacity">
                         Рассчитать стоимость
-                    </button>
+                    </a>
                     <div class="text-[11px] sm:text-xs text-[#111111]">
                         Бесплатная консультация и расчёт стоимости проекта
                     </div>

@@ -41,9 +41,9 @@
                 </p>
 
                 <div class="flex justify-center lg:justify-start">
-                    <button class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-2.5 bg-[#7D9B73] text-white font-bold text-sm sm:text-base rounded">
+                    <a href="#js-contact-form" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-2.5 bg-[#7D9B73] text-white font-bold text-sm sm:text-base rounded">
                         Заказать прямо сейчас
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -187,17 +187,17 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @php
     $worksCards = [
-        ['title' => "Благоустройство", 'img' => "/img/999.jpg"],
-        ['title' => "Мощение дорожек", 'img' => "/img/paving_paths_img.png"],
-        ['title' => "Подпорные стены", 'img' => "/img/retaining_walls.png"],
-        ['title' => "Озеленение", 'img' => "/img/888.jpg"],
-        ['title' => "Уход за садом", 'img' => "/img/garden_maintenance_img.png"],
-        ['title' => "Очистка прудов", 'img' => "/img/cleaning_ponds_img.png"],
+        ['title' => "Благоустройство", 'img' => "/img/999.jpg", 'url' => '/services/blagoustrojstvo-dachnogo-uchastka'],
+        ['title' => "Мощение дорожек", 'img' => "/img/paving_paths_img.png", 'url' => '/services/moshhenie-dorozhek'],
+        ['title' => "Подпорные стены", 'img' => "/img/retaining_walls.png", 'url' => '/services/podpornye-stenki'],
+        ['title' => "Озеленение", 'img' => "/img/888.jpg", 'url' => '/services/ozelenenie-uchastka'],
+        ['title' => "Уход за садом", 'img' => "/img/garden_maintenance_img.png", 'url' => '/services/ukhod-za-sadom'],
+        ['title' => "Очистка прудов", 'img' => "/img/cleaning_ponds_img.png", 'url' => '/services/ochistka-prudov'],
     ];
 @endphp
 
             @foreach($worksCards as $card)
-                <article class="group overflow-hidden border border-gray-700">
+                <a href="{{ $card['url'] }}" class="group overflow-hidden border border-gray-700 block">
                     <div class="relative aspect-[4/3] bg-cover bg-center bg-no-repeat group-hover:scale-[1.02] transition-transform duration-300"
                          style="background-image: url('{{ $card['img'] }}')">
                         <div class="absolute left-4 bottom-4">
@@ -206,7 +206,7 @@
                             </h3>
                         </div>
                     </div>
-                </article>
+                </a>
             @endforeach
         </div>
     </div>
@@ -265,9 +265,9 @@
                     <div class="text-xs sm:text-sm text-gray-200 mb-3">
                         Цена — <span class="font-semibold">от 8 000 руб/сотка.</span>
                     </div>
-                    <button class="w-full py-2.5 text-xs sm:text-sm bg-[#7D9B73] text-white font-bold rounded">
+                    <a href="#js-contact-form" class="inline-flex items-center justify-center w-full py-2.5 text-xs sm:text-sm bg-[#7D9B73] text-white font-bold rounded">
                         Рассчитать стоимость
-                    </button>
+                    </a>
                 </div>
             </article>
 
@@ -330,9 +330,9 @@
                     <div class="text-xs sm:text-sm text-gray-200 mb-3">
                         Цена — <span class="font-semibold">от 10 000 руб/сотка.</span>
                     </div>
-                    <button class="w-full py-2.5 text-xs sm:text-sm bg-[#7D9B73] text-white font-bold rounded">
+                    <a href="#js-contact-form" class="inline-flex items-center justify-center w-full py-2.5 text-xs sm:text-sm bg-[#7D9B73] text-white font-bold rounded">
                         Рассчитать стоимость
-                    </button>
+                    </a>
                 </div>
             </article>
 
@@ -404,9 +404,9 @@
                     <div class="text-xs sm:text-sm text-gray-200 mb-3">
                         Цена — <span class="font-semibold">от 12 000 руб/сотка.</span>
                     </div>
-                    <button class="w-full py-2.5 text-xs sm:text-sm bg-[#7D9B73] text-white font-bold rounded">
+                    <a href="#js-contact-form" class="inline-flex items-center justify-center w-full py-2.5 text-xs sm:text-sm bg-[#7D9B73] text-white font-bold rounded">
                         Рассчитать стоимость
-                    </button>
+                    </a>
                 </div>
             </article>
         </div>
@@ -449,9 +449,9 @@
                     <div class="text-xs sm:text-sm text-gray-200 mb-3">
                         Цена — <span class="font-semibold">от 30 000 руб / 1 объект / 1 визуализация.</span>
                     </div>
-                    <button class="w-full py-2.5 text-xs sm:text-sm bg-[#7D9B73] text-white font-bold rounded">
+                    <a href="#js-contact-form" class="inline-flex items-center justify-center w-full py-2.5 text-xs sm:text-sm bg-[#7D9B73] text-white font-bold rounded">
                         Рассчитать стоимость
-                    </button>
+                    </a>
                 </div>
         </article>
 
@@ -483,9 +483,9 @@
                     <div class="text-xs sm:text-sm text-gray-200 mb-3">
                         Цена — <span class="font-semibold">от 6 000 руб/сотка.</span>
                     </div>
-                    <button class="w-full py-2.5 text-xs sm:text-sm bg-[#7D9B73] text-white font-bold rounded">
+                    <a href="#js-contact-form" class="inline-flex items-center justify-center w-full py-2.5 text-xs sm:text-sm bg-[#7D9B73] text-white font-bold rounded">
                         Рассчитать стоимость
-                    </button>
+                    </a>
                 </div>
         </article>
 
@@ -584,7 +584,7 @@
                  class="w-full h-full object-cover max-h-[700px]">
 
             
-            <div class="absolute left-1/2 -translate-x-1/2 top-6 sm:top-10 hidden"
+            <div class="absolute left-1/2 -translate-x-1/2 top-6 sm:top-10 hidden z-50"
                  data-hotspot-tooltip>
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden w-[260px] sm:w-[320px]">
                     <div class="relative">
@@ -606,7 +606,7 @@
 
             
             <button type="button"
-                    class="absolute flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-black text-lg shadow-lg cursor-pointer left-[58%] top-[32%]"
+                    class="absolute z-10 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-black text-lg shadow-lg cursor-pointer left-[58%] top-[32%]"
                     data-hotspot-button
                     data-image="/img/new-img/Rectangle%2018%20(2).png"
                     data-caption="Укладка рулонного газона — аккуратные зелёные площадки для отдыха и игр.">
@@ -614,7 +614,7 @@
             </button>
 
             <button type="button"
-                    class="absolute flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-black text-lg shadow-lg cursor-pointer left-[42%] top-[52%]"
+                    class="absolute z-10 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-black text-lg shadow-lg cursor-pointer left-[42%] top-[52%]"
                     data-hotspot-button
                     data-image="/img/new-img/777.jpg"
                     data-caption="Терраса и зоны отдыха — место для встреч с семьёй и друзьями.">
@@ -622,7 +622,7 @@
             </button>
 
             <button type="button"
-                    class="absolute flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-black text-lg shadow-lg cursor-pointer left-[73%] top-[39%]"
+                    class="absolute z-10 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-black text-lg shadow-lg cursor-pointer left-[73%] top-[39%]"
                     data-hotspot-button
                     data-image="/img/new-img/333.jpg"
                     data-caption="Зоны посадок — продуманное сочетание кустарников, деревьев и многолетников.">
@@ -630,7 +630,7 @@
             </button>
 
             <button type="button"
-                    class="absolute flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-black text-lg shadow-lg cursor-pointer left-[52%] top-[78%]"
+                    class="absolute z-10 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-black text-lg shadow-lg cursor-pointer left-[52%] top-[78%]"
                     data-hotspot-button
                     data-image="/img/new-img/222.jpg"
                     data-caption="Пергола над парковочной зоной на загородном участке - въездная красивая зона на участке.">
@@ -650,16 +650,16 @@
 
         @php
     $cases = [
-        ['title' => "Лунное озеро", 'img' => "/img/Rectangle%2015.png"],
-        ['title' => "Водный мир", 'img' => "/img/Rectangle%2016.png"],
-        ['title' => "Лиголамби", 'img' => "/img/Rectangle%2017.png"],
-        ['title' => "Суходолье", 'img' => "/img/Rectangle%2018.png"],
+        ['title' => "Лунное озеро", 'img' => "/img/Rectangle%2015.png", 'url' => '/portfolio/moon-lake'],
+        ['title' => "Водный мир", 'img' => "/img/Rectangle%2016.png", 'url' => '/portfolio/vodnyi-mir'],
+        ['title' => "Лиголамби", 'img' => "/img/Rectangle%2017.png", 'url' => '/portfolio/ligolambi'],
+        ['title' => "Суходолье", 'img' => "/img/Rectangle%2018.png", 'url' => '/portfolio/suxodole'],
     ];
 @endphp
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             @foreach($cases as $case)
-                <article class="space-y-3">
+                <a href="{{ $case['url'] }}" class="space-y-3 block">
                     <div class="rounded-3xl overflow-hidden">
                         <img src="{{ $case['img'] }}" alt="{{ $case['title'] }}" class="w-full h-full object-cover max-h-[360px]">
                     </div>
@@ -668,7 +668,7 @@
                         <p class="text-gray-200">Площадь участка: 2000 м²</p>
                         <p class="text-gray-200">Сроки: 30 дней</p>
                     </div>
-        </article>
+        </a>
             @endforeach
         </div>
     </div>

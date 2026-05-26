@@ -36,6 +36,7 @@ Route::get('/storage/{path}', function (string $path) {
 })->where('path', '.*');
 Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolios.show');
+Route::redirect('/landshaftnoe-proektirovanie', '/services/landshaftnoe-proektirovanie', 301);
 Route::post('/notify-send', [NotifyController::class, 'send'])->name('notify.send')->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
 Route::get('/{slug?}', [PageController::class, 'show'])->name('pages.show');
 //Route::get('/{slug?}', function (string $slug = null) {
